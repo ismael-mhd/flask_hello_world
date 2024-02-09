@@ -4,11 +4,7 @@
     <title> Histogramme </title>
     <!--Load the AJAX API-->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-   </head>
-      
-      <body>
-        <div id="chart_div"></div>
-        <script> 
+    <script type="text/javascript">    
 
       // Load the Visualization API and the corechart package.
       google.charts.load('current', {'packages':['corechart']});
@@ -42,13 +38,15 @@
         var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
         chart.draw(data, options);
       }
-          fetch('/paris/')
-            .then(response => response.json())
-            .then(data => {
-              drawChart(data);
-            })
+  </script>
+  </head>
+  <body>
+          // fetch('/paris/')
+          //  .then(response => response.json())
+          //  .then(data => {
+          //    drawChart(data);
+          // })
         <!--Div that will hold the pie chart-->
       <div id="chart_div"></div>
-       </script>
   </body>
 </html>

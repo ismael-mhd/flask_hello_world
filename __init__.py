@@ -12,11 +12,15 @@ def hello_world():
 
 @app.route("/fr/")
 def monfr():
-    return "<h2>Bonjour Tout le monde !</h2>"
+    return "<h2>Bonjour tout le monde !</h2>"
 
 @app.route("/rapport/")
 def mongraphique():
     return render_template("graphique.html")
+
+@app.route("/histogramme/")
+def monhistogramme():
+    return render_template("histogramme.html")
 
 @app.route('/paris/')
 def meteo():

@@ -32,10 +32,12 @@
         // Set chart options
         var options = {'title':'Température de Paris les 16 prochains jours',
                        'width':500,
-                       'height':300};
+                       'height':300,
+                        legend: { position: 'bottom' }
+                      };
 
         // Instantiate and draw our chart, passing in some options.
-        var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+        var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
         chart.draw(dataTable, options);
       }
     

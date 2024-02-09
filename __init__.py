@@ -57,7 +57,7 @@ def Readfiche(post_id):
     return render_template('read_data.html', data=data)
 
 @app.route('/fiche_client/<string:post_nom>')
-def Readfiche(post_nom):
+def ReadNom(post_nom):
     conn = sqlite3.connect('database.db')
     cursor = conn.cursor()
     cursor.execute('SELECT * FROM clients WHERE nom LIKE %?%', (post_nom,))

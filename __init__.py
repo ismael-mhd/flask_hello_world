@@ -1,7 +1,8 @@
-from flask import Flask, render_template_string, render_template, jsonify
+from flask import Flask, render_template_string, render_template, jsonify, request
 from flask import render_template
 from flask import json
 from urllib.request import urlopen
+from datetime import datetime
 import sqlite3
                                                                                                                                        
 app = Flask(__name__)                                                                                                                  
@@ -67,8 +68,12 @@ def ReadNom(post_nom):
     # Rendre le template HTML et transmettre les données
     return render_template('read_data.html', data=data)
 
-@app.route('/enregistrer/')
-def enregistrer(id,created,nom,prenom,adresse):
+@app.route('/ajouter_client/')
+def ajouter_client():
+    nom = request.form['nom']
+    prenom = request.form['prenom']
+    adresse = request.form['adresse']
+    created = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     conn = sqlite3.connect('database.db')
     cursor = conn.cursor()
     sql = """INSERT INTO clients(created, nom, prenom, adresse) VALUES(?,?,?,?);"""
@@ -78,7 +83,7 @@ def enregistrer(id,created,nom,prenom,adresse):
     conn.close()
     
     # Rendre le template HTML et transmettre les données
-    return render_template('write_data.html', data=data)
+    return render_template('formulaire.html', data=data)
                                                                                                                                        
 if __name__ == "__main__":
   app.run(debug=True)

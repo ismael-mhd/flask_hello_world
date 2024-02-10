@@ -68,7 +68,11 @@ def ReadNom(post_nom):
     # Rendre le template HTML et transmettre les données
     return render_template('read_data.html', data=data)
 
-@app.route('/formulaire/', methods=['POST'])
+@app.route('/formulaire/')
+def index():
+  return render_template('formulaire.html')
+
+@app.route('/formulaire/ajouter_client', methods=['POST'])
 def ajouter_client():
     nom = request.form['nom']
     prenom = request.form['prenom']

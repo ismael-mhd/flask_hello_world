@@ -76,9 +76,9 @@ def ajouter_client():
     created = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     conn = sqlite3.connect('database.db')
     cursor = conn.cursor()
-    sql = """INSERT INTO clients(created, nom, prenom, adresse) VALUES(?,?,?,?);"""
-    data = (id,created,nom,prenom,adresse)
-    cursor.execute(sql, data)
+    # sql = """INSERT INTO clients(created, nom, prenom, adresse) VALUES(?,?,?,?);"""
+    # data = (id,created,nom,prenom,adresse)
+    cursor.execute('INSERT INTO clients(created, nom, prenom, adresse) VALUES(?,?,?,?)',(created, nom, prenom, adresse))
     conn.commit()
     conn.close()
     

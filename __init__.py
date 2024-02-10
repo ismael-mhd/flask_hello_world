@@ -83,7 +83,7 @@ def ajouter_client():
     conn.close()
     
     # Rendre le template HTML et transmettre les données
-    return render_template('formulaire.html', data=data)
+    return render_template('formulaire.html')
                                                                                                                                        
 if __name__ == "__main__":
   app.run(debug=True)

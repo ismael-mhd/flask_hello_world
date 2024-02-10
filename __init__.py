@@ -85,9 +85,9 @@ def ajouter_client():
     cursor.execute('INSERT INTO clients(created, nom, prenom, adresse) VALUES(?,?,?,?)',(created, nom, prenom, adresse))
     conn.commit()
     conn.close()
-    
+    return 'Client ajouté avec succès'
     # Rendre le template HTML et transmettre les données
-    return render_template('formulaire.html')
+    # return render_template('formulaire.html')
                                                                                                                                        
 if __name__ == "__main__":
   app.run(debug=True)

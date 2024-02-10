@@ -66,6 +66,19 @@ def ReadNom(post_nom):
     
     # Rendre le template HTML et transmettre les données
     return render_template('read_data.html', data=data)
+
+@app.route('/enregistrer/')
+def enregistrer(id,created,nom,prenom,adresse):
+    conn = sqlite3.connect('database.db')
+    cursor = conn.cursor()
+    sql = """INSERT INTO clients(created, nom, prenom, adresse) VALUES(?,?,?,?);"""
+    data = (id,created,nom,prenom,adresse)
+    cursor.execute(sql, data)
+    conn.commit()
+    conn.close()
+    
+    # Rendre le template HTML et transmettre les données
+    return render_template('write_data.html', data=data)
                                                                                                                                        
 if __name__ == "__main__":
   app.run(debug=True)
